@@ -9,11 +9,10 @@ import java.io.PrintStream;
 
 public class TextGUI {
     private JPanel mainPanel;
-    private JPanel inputPanel;
-    private JPanel consolePanelRootPanel;
-
+    private InputPanel inputPanel;
     private ConsolePanel consolePanel;
-
+    private JPanel consolePanelRootPanel;
+    private JPanel inputPanelRootPanel;
     public final PrintStream out;
     public final InputStream in;
 
@@ -23,6 +22,7 @@ public class TextGUI {
     public TextGUI(String title) {
         JFrame mainFrame = new JFrame(title);
         consolePanel = new ConsolePanel();
+        inputPanel = new InputPanel();
         $$$setupUI$$$();
         mainFrame.setContentPane(mainPanel);
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -30,7 +30,7 @@ public class TextGUI {
         mainFrame.setVisible(true);
         out = consolePanel.out;
         in = consolePanel.in;
-        defaultInputPanelConstraints = ((FormLayout) mainPanel.getLayout()).getConstraints(inputPanel);
+        defaultInputPanelConstraints = ((FormLayout) mainPanel.getLayout()).getConstraints(inputPanelRootPanel);
         this.hideInputPanel();
     }
 
@@ -50,15 +50,9 @@ public class TextGUI {
         mainPanel = new JPanel();
         mainPanel.setLayout(new FormLayout("fill:d:noGrow,left:4dlu:noGrow,fill:max(d;4px):noGrow", "center:259px:grow(1.1)"));
         mainPanel.setPreferredSize(new Dimension(800, 600));
-        inputPanel = new JPanel();
-        inputPanel.setLayout(new FormLayout("fill:d:noGrow", "center:d:noGrow"));
-        inputPanel.setPreferredSize(new Dimension(200, 600));
+        inputPanelRootPanel.setPreferredSize(new Dimension(200, 600));
         CellConstraints cc = new CellConstraints();
-        mainPanel.add(inputPanel, new CellConstraints(1, 1, 1, 1, CellConstraints.DEFAULT, CellConstraints.DEFAULT, new Insets(10, 10, 10, 10)));
-        inputPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.black), null, TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, null, null));
-        final JLabel label1 = new JLabel();
-        label1.setText("Label");
-        inputPanel.add(label1, cc.xy(1, 1));
+        mainPanel.add(inputPanelRootPanel, new CellConstraints(1, 1, 1, 1, CellConstraints.DEFAULT, CellConstraints.DEFAULT, new Insets(10, 10, 10, 10)));
         consolePanelRootPanel.setPreferredSize(new Dimension(800, 600));
         mainPanel.add(consolePanelRootPanel, cc.xy(3, 1));
     }
@@ -72,6 +66,7 @@ public class TextGUI {
 
     private void createUIComponents() {
         consolePanelRootPanel = consolePanel.getRootPanel();
+        inputPanelRootPanel = inputPanel.getRootPanel();
     }
 
     public void clear() {
@@ -79,14 +74,14 @@ public class TextGUI {
     }
 
     public void hideInputPanel() {
-        defaultInputPanelConstraints = ((FormLayout) mainPanel.getLayout()).getConstraints(inputPanel);
-        mainPanel.remove(inputPanel);
+        defaultInputPanelConstraints = ((FormLayout) mainPanel.getLayout()).getConstraints(inputPanelRootPanel);
+        mainPanel.remove(inputPanelRootPanel);
         mainPanel.revalidate();
         mainPanel.repaint();
     }
 
     public void showInputPanel() {
-        mainPanel.add(inputPanel, defaultInputPanelConstraints, 0);
+        mainPanel.add(inputPanelRootPanel, defaultInputPanelConstraints, 0);
         mainPanel.revalidate();
         mainPanel.repaint();
     }

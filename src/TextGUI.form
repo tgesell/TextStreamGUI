@@ -13,9 +13,7 @@
     </properties>
     <border type="none"/>
     <children>
-      <grid id="547e" binding="inputPanel" layout-manager="FormLayout">
-        <rowspec value="center:d:noGrow"/>
-        <colspec value="fill:d:noGrow"/>
+      <grid id="547e" binding="inputPanelRootPanel" custom-create="true" layout-manager="FormLayout">
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
           <forms top="10" left="10" bottom="10" right="10"/>
@@ -23,18 +21,10 @@
         <properties>
           <preferredSize width="200" height="600"/>
         </properties>
-        <border type="line"/>
-        <children>
-          <component id="3e729" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-              <forms/>
-            </constraints>
-            <properties>
-              <text value="Label"/>
-            </properties>
-          </component>
-        </children>
+        <border type="none">
+          <color color="-16777216"/>
+        </border>
+        <children/>
       </grid>
       <grid id="54789" binding="consolePanelRootPanel" custom-create="true" layout-manager="FormLayout">
         <rowspec value="center:d:grow"/>
