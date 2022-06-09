@@ -55,7 +55,7 @@ public class TextGUI {
         final JLabel label1 = new JLabel();
         label1.setText("Label");
         inputPanel.add(label1, cc.xy(1, 1));
-        consolePanelRootPanel.setPreferredSize(new Dimension(600, 600));
+        consolePanelRootPanel.setPreferredSize(new Dimension(800, 600));
         mainPanel.add(consolePanelRootPanel, cc.xy(3, 1));
     }
 
@@ -72,5 +72,11 @@ public class TextGUI {
 
     public void clear() {
         consolePanel.clear();
+    }
+
+    public void hideInputPanel() {
+        mainPanel.remove(inputPanel);
+        mainPanel.revalidate();
+        mainPanel.repaint();
     }
 }

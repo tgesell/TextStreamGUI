@@ -26,7 +26,7 @@
             <constraints/>
             <properties>
               <editable value="false"/>
-              <preferredSize width="800" height="500"/>
+              <preferredSize width="600" height="500"/>
             </properties>
           </component>
         </children>
