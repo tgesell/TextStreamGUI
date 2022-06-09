@@ -17,6 +17,8 @@ public class TextGUI {
     public final PrintStream out;
     public final InputStream in;
 
+    private CellConstraints defaultInputPanelConstraints;
+
 
     public TextGUI(String title) {
         JFrame mainFrame = new JFrame(title);
@@ -28,6 +30,8 @@ public class TextGUI {
         mainFrame.setVisible(true);
         out = consolePanel.out;
         in = consolePanel.in;
+        defaultInputPanelConstraints = ((FormLayout) mainPanel.getLayout()).getConstraints(inputPanel);
+        this.hideInputPanel();
     }
 
     public TextGUI() {
@@ -75,7 +79,14 @@ public class TextGUI {
     }
 
     public void hideInputPanel() {
+        defaultInputPanelConstraints = ((FormLayout) mainPanel.getLayout()).getConstraints(inputPanel);
         mainPanel.remove(inputPanel);
+        mainPanel.revalidate();
+        mainPanel.repaint();
+    }
+
+    public void showInputPanel() {
+        mainPanel.add(inputPanel, defaultInputPanelConstraints, 0);
         mainPanel.revalidate();
         mainPanel.repaint();
     }

@@ -5,8 +5,6 @@ public class TestTextGUI {
 
         TextGUI gui = new TextGUI();
 
-        //gui.hideInputPanel();
-
         Scanner input = new Scanner(gui.in);
 
         gui.out.println("Hello");
@@ -18,6 +16,7 @@ public class TestTextGUI {
         gui.clear();
         gui.out.println("Hello " + name);
 
+        gui.showInputPanel();
         gui.out.println("Enter your city: ");
         String city = input.nextLine();
         gui.out.println("City: " + city);
@@ -27,8 +26,11 @@ public class TestTextGUI {
         gui.out.println("Age: " + age);
         input.nextLine();
 
+        gui.hideInputPanel();
         gui.out.println("Enter your zip code: ");
         String zip = input.nextLine();
         gui.out.println("zip code: " + zip);
+
+        gui.showInputPanel();
     }
 }
