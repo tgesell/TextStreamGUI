@@ -1,55 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="TextGUI">
   <grid id="27dc6" binding="mainPanel" layout-manager="FormLayout">
-    <rowspec value="center:522px:noGrow"/>
-    <rowspec value="top:44dlu:noGrow"/>
+    <rowspec value="center:259px:grow(1.1)"/>
+    <colspec value="fill:d:noGrow"/>
+    <colspec value="left:4dlu:noGrow"/>
     <colspec value="fill:max(d;4px):noGrow"/>
-    <colspec value="left:58dlu:noGrow"/>
-    <colspec value="fill:d:grow"/>
     <constraints>
-      <xy x="20" y="20" width="500" height="599"/>
+      <xy x="91" y="18" width="429" height="402"/>
     </constraints>
     <properties>
       <preferredSize width="800" height="600"/>
     </properties>
     <border type="none"/>
     <children>
-      <scrollpane id="69149" binding="outputScrollPane">
+      <grid id="547e" binding="inputPanel" layout-manager="FormLayout">
+        <rowspec value="center:d:noGrow"/>
+        <colspec value="fill:d:noGrow"/>
         <constraints>
-          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-          <forms defaultalign-horz="false" defaultalign-vert="false"/>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <forms top="10" left="10" bottom="10" right="10"/>
         </constraints>
         <properties>
-          <preferredSize width="800" height="500"/>
+          <preferredSize width="200" height="600"/>
         </properties>
         <border type="line"/>
         <children>
-          <component id="53d53" class="javax.swing.JTextArea" binding="outputTextArea">
-            <constraints/>
-            <properties>
-              <editable value="false"/>
-              <preferredSize width="800" height="500"/>
-            </properties>
-          </component>
-        </children>
-      </scrollpane>
-      <grid id="90c9f" binding="inputPanel" layout-manager="FormLayout">
-        <rowspec value="center:d:noGrow"/>
-        <colspec value="fill:67px:grow"/>
-        <constraints>
-          <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
-          <forms defaultalign-vert="false"/>
-        </constraints>
-        <properties>
-          <minimumSize width="0" height="0"/>
-          <preferredSize width="200" height="500"/>
-        </properties>
-        <border type="none"/>
-        <children>
-          <component id="862a5" class="javax.swing.JLabel" binding="label1">
+          <component id="3e729" class="javax.swing.JLabel">
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
-              <forms defaultalign-vert="false"/>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <forms/>
             </constraints>
             <properties>
               <text value="Label"/>
@@ -57,17 +36,19 @@
           </component>
         </children>
       </grid>
-      <component id="1b52a" class="javax.swing.JTextField" binding="inputField">
+      <grid id="54789" binding="consolePanelRootPanel" custom-create="true" layout-manager="FormLayout">
+        <rowspec value="center:d:grow"/>
+        <colspec value="fill:d:grow"/>
         <constraints>
-          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
-          </grid>
-          <forms defaultalign-horz="false"/>
+          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <forms/>
         </constraints>
         <properties>
-          <preferredSize width="600" height="100"/>
+          <preferredSize width="600" height="600"/>
         </properties>
-      </component>
+        <border type="none"/>
+        <children/>
+      </grid>
     </children>
   </grid>
 </form>

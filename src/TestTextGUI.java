@@ -5,7 +5,7 @@ public class TestTextGUI {
 
         TextGUI gui = new TextGUI();
 
-        gui.hideInputPanel();
+        //gui.hideInputPanel();
 
         Scanner input = new Scanner(gui.in);
 
