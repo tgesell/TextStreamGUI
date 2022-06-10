@@ -1,3 +1,4 @@
+import javax.swing.AbstractButton;
 import java.util.Scanner;
 
 public class TestTextGUI {
@@ -32,5 +33,14 @@ public class TestTextGUI {
         gui.out.println("zip code: " + zip);
 
         gui.showInputPanel();
+
+        gui.out.println("Make a Selection");
+        for (AbstractButton b: gui.getButtons()) {
+            if (b.isSelected()) {
+                gui.out.println(b.getText() + " was selected.");
+            }
+        }
+
+
     }
 }
