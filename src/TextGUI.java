@@ -18,6 +18,7 @@ public class TextGUI {
     private JPanel inputPanelRootPanel;
     public final PrintStream out;
     public final InputStream in;
+    private StringBuffer input;
 
     private CellConstraints defaultInputPanelConstraints;
     private JFrame mainFrame;
@@ -25,8 +26,9 @@ public class TextGUI {
 
     public TextGUI(String title) {
         mainFrame = new JFrame(title);
-        consolePanel = new ConsolePanel();
-        inputPanel = new ButtonPanel();
+        input = new StringBuffer();
+        consolePanel = new ConsolePanel(input);
+        inputPanel = new ButtonPanel(input);
         $$$setupUI$$$();
         out = consolePanel.out;
         in = consolePanel.in;
@@ -86,24 +88,26 @@ public class TextGUI {
     }
 
     public void hideInputPanel() {
-        defaultInputPanelConstraints = ((FormLayout) mainPanel.getLayout()).getConstraints(inputPanelRootPanel);
-        try {
-            SwingUtilities.invokeAndWait(new Runnable() {
-                public void run() {
-                    mainPanel.remove(inputPanelRootPanel);
-                    mainPanel.revalidate();
-                    mainPanel.repaint();
-                }
-            });
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        } catch (InvocationTargetException e) {
-            throw new RuntimeException(e);
+        if (inputPanelRootPanel.getParent() == mainPanel) {
+            defaultInputPanelConstraints = ((FormLayout) mainPanel.getLayout()).getConstraints(inputPanelRootPanel);
+            try {
+                SwingUtilities.invokeAndWait(new Runnable() {
+                    public void run() {
+                        mainPanel.remove(inputPanelRootPanel);
+                        mainPanel.revalidate();
+                        mainPanel.repaint();
+                    }
+                });
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            } catch (InvocationTargetException e) {
+                throw new RuntimeException(e);
+            }
         }
-
     }
 
     public void showInputPanel() {
+        if (!(inputPanelRootPanel.getParent() == mainPanel))
         try {
             SwingUtilities.invokeAndWait(new Runnable() {
                 public void run() {
