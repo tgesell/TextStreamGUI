@@ -1,11 +1,15 @@
 import com.jgoodies.forms.layout.CellConstraints;
 import com.jgoodies.forms.layout.FormLayout;
 
+//import javax.swing.*;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.io.InputStream;
 import java.io.PrintStream;
+
+import java.lang.reflect.InvocationTargetException;
+import java.util.List;
 
 public class TextGUI {
     private JPanel mainPanel;
@@ -17,25 +21,34 @@ public class TextGUI {
     public final InputStream in;
 
     private CellConstraints defaultInputPanelConstraints;
+    private JFrame mainFrame;
 
 
     public TextGUI(String title) {
-        JFrame mainFrame = new JFrame(title);
+        mainFrame = new JFrame(title);
         consolePanel = new ConsolePanel();
         inputPanel = new InputPanel();
         $$$setupUI$$$();
-        mainFrame.setContentPane(mainPanel);
-        mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        mainFrame.pack();
-        mainFrame.setVisible(true);
         out = consolePanel.out;
         in = consolePanel.in;
         defaultInputPanelConstraints = ((FormLayout) mainPanel.getLayout()).getConstraints(inputPanelRootPanel);
         this.hideInputPanel();
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                createAndShowGUI();
+            }
+        });
     }
 
     public TextGUI() {
         this("TextGUI");
+    }
+
+    private void createAndShowGUI() {
+        mainFrame.setContentPane(mainPanel);
+        mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        mainFrame.pack();
+        mainFrame.setVisible(true);
     }
 
     /**
@@ -75,14 +88,40 @@ public class TextGUI {
 
     public void hideInputPanel() {
         defaultInputPanelConstraints = ((FormLayout) mainPanel.getLayout()).getConstraints(inputPanelRootPanel);
-        mainPanel.remove(inputPanelRootPanel);
-        mainPanel.revalidate();
-        mainPanel.repaint();
+        try {
+            SwingUtilities.invokeAndWait(new Runnable() {
+                public void run() {
+                    mainPanel.remove(inputPanelRootPanel);
+                    mainPanel.revalidate();
+                    mainPanel.repaint();
+                }
+            });
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        } catch (InvocationTargetException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     public void showInputPanel() {
-        mainPanel.add(inputPanelRootPanel, defaultInputPanelConstraints, 0);
-        mainPanel.revalidate();
-        mainPanel.repaint();
+        try {
+            SwingUtilities.invokeAndWait(new Runnable() {
+                public void run() {
+                    mainPanel.add(inputPanelRootPanel, defaultInputPanelConstraints, 0);
+                    mainPanel.revalidate();
+                    mainPanel.repaint();
+                }
+            });
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        } catch (InvocationTargetException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    public List<AbstractButton> getButtons() {
+        return inputPanel.getButtons();
     }
 }
