@@ -2,12 +2,11 @@ import com.jgoodies.forms.layout.CellConstraints;
 import com.jgoodies.forms.layout.FormLayout;
 
 import javax.swing.*;
-import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InputPanel {
+public class ButtonPanel {
     private JPanel mainPanel;
     private JButton button1;
     private JRadioButton aRadioButton;

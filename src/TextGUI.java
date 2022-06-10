@@ -3,7 +3,6 @@ import com.jgoodies.forms.layout.FormLayout;
 
 //import javax.swing.*;
 import javax.swing.*;
-import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.io.InputStream;
 import java.io.PrintStream;
@@ -13,7 +12,7 @@ import java.util.List;
 
 public class TextGUI {
     private JPanel mainPanel;
-    private InputPanel inputPanel;
+    private ButtonPanel inputPanel;
     private ConsolePanel consolePanel;
     private JPanel consolePanelRootPanel;
     private JPanel inputPanelRootPanel;
@@ -27,7 +26,7 @@ public class TextGUI {
     public TextGUI(String title) {
         mainFrame = new JFrame(title);
         consolePanel = new ConsolePanel();
-        inputPanel = new InputPanel();
+        inputPanel = new ButtonPanel();
         $$$setupUI$$$();
         out = consolePanel.out;
         in = consolePanel.in;
