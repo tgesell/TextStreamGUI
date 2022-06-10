@@ -4,6 +4,8 @@ import com.jgoodies.forms.layout.FormLayout;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class InputPanel {
     private JPanel mainPanel;
@@ -62,6 +64,13 @@ public class InputPanel {
         eRadioButton = new JRadioButton();
         eRadioButton.setText("E");
         inputPanelModule.add(eRadioButton, cc.xy(1, 11));
+        ButtonGroup buttonGroup;
+        buttonGroup = new ButtonGroup();
+        buttonGroup.add(aRadioButton);
+        buttonGroup.add(bRadioButton);
+        buttonGroup.add(cRadioButton);
+        buttonGroup.add(dRadioButton);
+        buttonGroup.add(eRadioButton);
     }
 
     /**
@@ -73,5 +82,17 @@ public class InputPanel {
 
     public JPanel getRootPanel() {
         return mainPanel;
+    }
+
+    public List<AbstractButton> getButtons() {
+        ArrayList<AbstractButton> buttons = new ArrayList<>();
+        buttons.add(aRadioButton);
+        buttons.add(bRadioButton);
+        buttons.add(cRadioButton);
+        buttons.add(dRadioButton);
+        buttons.add(eRadioButton);
+
+        return buttons;
+
     }
 }

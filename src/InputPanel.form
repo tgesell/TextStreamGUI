@@ -105,4 +105,13 @@
       </grid>
     </children>
   </grid>
+  <buttonGroups>
+    <group name="buttonGroup1">
+      <member id="9f96"/>
+      <member id="e6ba0"/>
+      <member id="6785a"/>
+      <member id="b5dbb"/>
+      <member id="2b2d6"/>
+    </group>
+  </buttonGroups>
 </form>
