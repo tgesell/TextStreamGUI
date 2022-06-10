@@ -1,9 +1,9 @@
 import java.util.Scanner;
 
-public class TestTextGUI {
+public class TestTextStreamGUI {
     public static void main(String[] args) {
 
-        TextGUI gui = new TextGUI();
+        TextStreamGUI gui = new TextStreamGUI();
 
         Scanner input = new Scanner(gui.in);
 
@@ -34,6 +34,5 @@ public class TestTextGUI {
         gui.out.println(selection + " was selected");
 
         gui.hideButtonPanel();
-
     }
 }

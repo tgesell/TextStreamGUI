@@ -10,7 +10,7 @@ import java.io.PrintStream;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
-public class TextGUI {
+public class TextStreamGUI {
     private JPanel mainPanel;
     private ButtonPanel buttonPanel;
     private ConsolePanel consolePanel;
@@ -24,7 +24,7 @@ public class TextGUI {
     private JFrame mainFrame;
 
 
-    public TextGUI(String title) {
+    public TextStreamGUI(String title) {
         mainFrame = new JFrame(title);
         input = new StringBuffer();
         consolePanel = new ConsolePanel(input);
@@ -41,8 +41,8 @@ public class TextGUI {
         });
     }
 
-    public TextGUI() {
-        this("TextGUI");
+    public TextStreamGUI() {
+        this("TextStreamGUI");
     }
 
     private void createAndShowGUI() {

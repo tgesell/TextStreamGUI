@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/TextGUI.iml" filepath="$PROJECT_DIR$/TextGUI.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TextStreamGUI.iml" filepath="$PROJECT_DIR$/TextStreamGUI.iml" />
     </modules>
   </component>
 </project>

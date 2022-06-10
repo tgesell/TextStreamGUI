@@ -23,7 +23,7 @@ public class ButtonPanel {
         this.input = input;
         button1.addActionListener(new ActionListener() {
             /**
-             * @param e
+             * @param e ActionEvent that triggered the call of this method
              */
             @Override
             public void actionPerformed(ActionEvent e) {
