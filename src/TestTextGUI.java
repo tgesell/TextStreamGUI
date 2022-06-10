@@ -1,4 +1,3 @@
-import javax.swing.AbstractButton;
 import java.util.Scanner;
 
 public class TestTextGUI {
@@ -22,17 +21,19 @@ public class TestTextGUI {
         gui.out.println("Age: " + age);
         input.nextLine();
 
-        gui.hideInputPanel();
+        gui.hideButtonPanel();
         gui.out.println("Enter your zip code: ");
         String zip = input.nextLine();
         gui.out.println("zip code: " + zip);
 
-        gui.showInputPanel();
+        gui.showButtonPanel();
 
         gui.out.println("Make a Selection");
 
         String selection = input.nextLine();
         gui.out.println(selection + " was selected");
+
+        gui.hideButtonPanel();
 
     }
 }

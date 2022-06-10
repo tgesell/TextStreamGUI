@@ -23,7 +23,7 @@
           <text value="Button"/>
         </properties>
       </component>
-      <grid id="c7a10" binding="inputPanelModule" layout-manager="FormLayout">
+      <grid id="c7a10" binding="buttonPanelModule" layout-manager="FormLayout">
         <rowspec value="center:d:noGrow"/>
         <rowspec value="top:4dlu:noGrow"/>
         <rowspec value="center:max(d;4px):noGrow"/>
