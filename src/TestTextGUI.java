@@ -17,11 +17,6 @@ public class TestTextGUI {
         gui.clear();
         gui.out.println("Hello " + name);
 
-        gui.showInputPanel();
-        gui.out.println("Enter your city: ");
-        String city = input.nextLine();
-        gui.out.println("City: " + city);
-
         gui.out.println("Enter your age: ");
         int age = input.nextInt();
         gui.out.println("Age: " + age);
@@ -35,12 +30,9 @@ public class TestTextGUI {
         gui.showInputPanel();
 
         gui.out.println("Make a Selection");
-        for (AbstractButton b: gui.getButtons()) {
-            if (b.isSelected()) {
-                gui.out.println(b.getText() + " was selected.");
-            }
-        }
 
+        String selection = input.nextLine();
+        gui.out.println(selection + " was selected");
 
     }
 }

@@ -20,9 +20,7 @@ public class ConsolePanel {
     public final PrintStream out;
     public final InputStream in;
 
-    //private final JFrame mainFrame;
-
-    public ConsolePanel() {
+    public ConsolePanel(StringBuffer input) {
         out = new PrintStream(new OutputStream() {
             @Override
             public void write(int b) {
@@ -33,17 +31,15 @@ public class ConsolePanel {
             }
         });
         inputPointer = 0;
-        input = new StringBuffer();
+        this.input = input;
         in = new InputStream() {
 
             @Override
             public int read() {
-                //System.err.print(inputPointer + ": ");
                 boolean dataToRead = false;
                 if (inputPointer > 0 && input.charAt(inputPointer - 1) == '\n') {
                     input.delete(0, inputPointer);
                     inputPointer = 0;
-                    //System.err.println(">>>");
                     return -1;
                 }
 
