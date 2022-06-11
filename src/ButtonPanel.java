@@ -8,9 +8,17 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * ButtonPanel is one of two main components of TextStreamGUI.  It consists of a main JButton that
+ * when clicked, inquires of the other modules to get their state (the "selections" made by the user)
+ * and puts that data in a StringBuffer which can be read by the TextGUI InputStream.
+ *
+ * In addition, it may contain modules of other types of GUI components which allow selections to be made
+ * by the user.
+ */
 public class ButtonPanel {
     private JPanel mainPanel;
-    private JButton button1;
+    private JButton mainButton;
     private JRadioButton aRadioButton;
     private JRadioButton bRadioButton;
     private JRadioButton cRadioButton;
@@ -19,9 +27,15 @@ public class ButtonPanel {
     private JPanel buttonPanelModule;
     StringBuffer input;
 
+    /**
+     *
+     * @param input - the StringBuffer from the main TextStreamGUI that the InputStream reads out of.
+     *              ButtonPanel will append information into this StringBuffer to make it available
+     *              to the InputStream
+     */
     public ButtonPanel(StringBuffer input) {
         this.input = input;
-        button1.addActionListener(new ActionListener() {
+        mainButton.addActionListener(new ActionListener() {
             /**
              * @param e ActionEvent that triggered the call of this method
              */
@@ -69,11 +83,11 @@ public class ButtonPanel {
         mainPanel = new JPanel();
         mainPanel.setLayout(new FormLayout("fill:179px:noGrow", "center:377px:grow,top:4dlu:noGrow,center:d:grow"));
         mainPanel.setPreferredSize(new Dimension(200, 600));
-        button1 = new JButton();
-        button1.setPreferredSize(new Dimension(78, 50));
-        button1.setText("Button");
+        mainButton = new JButton();
+        mainButton.setPreferredSize(new Dimension(78, 50));
+        mainButton.setText("Button");
         CellConstraints cc = new CellConstraints();
-        mainPanel.add(button1, new CellConstraints(1, 3, 1, 1, CellConstraints.DEFAULT, CellConstraints.BOTTOM, new Insets(0, 5, 0, 5)));
+        mainPanel.add(mainButton, new CellConstraints(1, 3, 1, 1, CellConstraints.DEFAULT, CellConstraints.BOTTOM, new Insets(0, 5, 0, 5)));
         buttonPanelModule = new JPanel();
         buttonPanelModule.setLayout(new FormLayout("fill:d:noGrow", "center:d:noGrow,top:4dlu:noGrow,center:max(d;4px):noGrow,top:4dlu:noGrow,center:max(d;4px):noGrow,top:4dlu:noGrow,center:max(d;4px):noGrow,top:4dlu:noGrow,center:max(d;4px):noGrow,top:4dlu:noGrow,center:max(d;4px):noGrow"));
         buttonPanelModule.setPreferredSize(new Dimension(200, 175));
