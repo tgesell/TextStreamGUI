@@ -9,6 +9,16 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
 
+/**
+ * ConsolePanel is one of two main components in TextGUI.  It consists of an outputTextArea and
+ * an inputField.
+ *
+ * ConsolePanel also defines an InputStream and a PrintStream.  These are public final, and are utilized as
+ * the main TextStreamGUI InputStream and PrintStream.
+ *
+ * Text written into the PrintStream appears in the outputTextArea.  Text typed into the inputField, gets stored
+ * when Return is typed, and can then be read back out using the InputStream.
+ */
 public class ConsolePanel {
     private JPanel mainPanel;
     private JTextArea outputTextArea;
@@ -20,6 +30,12 @@ public class ConsolePanel {
     public final PrintStream out;
     public final InputStream in;
 
+    /**
+     *
+     * @param input - the StringBuffer from the main TextStreamGUI that the InputStream reads out of.
+     *              ConsolePanel will append information into this StringBuffer to make it available
+     *              to the InputStream
+     */
     public ConsolePanel(StringBuffer input) {
         out = new PrintStream(new OutputStream() {
             @Override
@@ -111,6 +127,9 @@ public class ConsolePanel {
         return mainPanel;
     }
 
+    /**
+     * clears the outputTextArea
+     */
     public void clear() {
         outputTextArea.setText("");
     }
