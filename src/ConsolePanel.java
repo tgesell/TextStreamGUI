@@ -24,7 +24,6 @@ public class ConsolePanel {
     private JTextArea outputTextArea;
     private JTextField inputField;
     private JScrollPane outputScrollPane;
-    private final StringBuffer input;
     private int inputPointer;
 
     public final PrintStream out;
@@ -47,7 +46,6 @@ public class ConsolePanel {
             }
         });
         inputPointer = 0;
-        this.input = input;
         in = new InputStream() {
 
             @Override
