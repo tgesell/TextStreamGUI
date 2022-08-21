@@ -22,7 +22,7 @@
         </properties>
         <border type="line"/>
         <children>
-          <component id="53d53" class="javax.swing.JTextArea" binding="outputTextArea">
+          <component id="53d53" class="javax.swing.JTextPane" binding="outputTextArea">
             <constraints/>
             <properties>
               <editable value="false"/>

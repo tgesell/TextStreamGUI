@@ -2,26 +2,29 @@ import com.jgoodies.forms.layout.*;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.StyledDocument;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.lang.reflect.InvocationTargetException;
 
 /**
  * ConsolePanel is one of two main components in TextGUI.  It consists of an outputTextArea and
  * an inputField.
- *
+ * <p>
  * ConsolePanel also defines an InputStream and a PrintStream.  These are public final, and are utilized as
  * the main TextStreamGUI InputStream and PrintStream.
- *
+ * <p>
  * Text written into the PrintStream appears in the outputTextArea.  Text typed into the inputField, gets stored
  * when Return is typed, and can then be read back out using the InputStream.
  */
 public class ConsolePanel {
     private JPanel mainPanel;
-    private JTextArea outputTextArea;
+    private JTextPane outputTextArea;
     private JTextField inputField;
     private JScrollPane outputScrollPane;
     private int inputPointer;
@@ -30,7 +33,6 @@ public class ConsolePanel {
     public final InputStream in;
 
     /**
-     *
      * @param input - the StringBuffer from the main TextStreamGUI that the InputStream reads out of.
      *              ConsolePanel will append information into this StringBuffer to make it available
      *              to the InputStream
@@ -41,7 +43,22 @@ public class ConsolePanel {
             public void write(int b) {
                 char c = (char) b;
                 String value = Character.toString(c);
-                outputTextArea.append(value);
+                try {
+                    SwingUtilities.invokeAndWait(new Runnable() {
+                        public void run() {
+                            StyledDocument doc = outputTextArea.getStyledDocument();
+                            try {
+                                doc.insertString(doc.getLength(), value, null);
+                            } catch (BadLocationException e) {
+                                throw new RuntimeException(e);
+                            }
+                        }
+                    });
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                } catch (InvocationTargetException e) {
+                    throw new RuntimeException(e);
+                }
 
             }
         });
@@ -66,7 +83,6 @@ public class ConsolePanel {
                         throw new RuntimeException(e);
                     }
                 }
-                //System.err.println(input);
                 return input.charAt(inputPointer++);
             }
         };
@@ -109,7 +125,7 @@ public class ConsolePanel {
         CellConstraints cc = new CellConstraints();
         mainPanel.add(outputScrollPane, cc.xy(1, 1, CellConstraints.FILL, CellConstraints.FILL));
         outputScrollPane.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.black), null, TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, null, null));
-        outputTextArea = new JTextArea();
+        outputTextArea = new JTextPane();
         outputTextArea.setEditable(false);
         outputTextArea.setPreferredSize(new Dimension(600, 500));
         outputScrollPane.setViewportView(outputTextArea);

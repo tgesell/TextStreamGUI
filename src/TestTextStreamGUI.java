@@ -31,7 +31,7 @@ public class TestTextStreamGUI {
         gui.out.println("Make a Selection");
 
         String selection = input.nextLine();
-        gui.out.println(selection + " was selected");
+        gui.out.println(selection + " <b>was selected</b>");
 
         gui.hideButtonPanel();
     }
