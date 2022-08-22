@@ -158,6 +158,7 @@ public class TextStreamGUI {
      */
     public void showButtonPanel() {
         if (!(buttonPanelRootPanel.getParent() == mainPanel))
+            buttonPanel.refreshButtons();
             try {
                 SwingUtilities.invokeAndWait(new Runnable() {
                     public void run() {
@@ -172,6 +173,15 @@ public class TextStreamGUI {
                 throw new RuntimeException(e);
             }
 
+    }
+    public void disableTextInput()
+    {
+        consolePanel.setEnabled(false);
+    }
+
+    public void enableTextInput()
+    {
+        consolePanel.setEnabled(true);
     }
 
     public List<AbstractButton> getButtons() {

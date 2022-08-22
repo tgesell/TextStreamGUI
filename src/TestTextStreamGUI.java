@@ -1,3 +1,6 @@
+import javax.swing.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class TestTextStreamGUI {
@@ -21,18 +24,23 @@ public class TestTextStreamGUI {
         gui.out.println("Age: " + age);
         input.nextLine();
 
-        gui.hideButtonPanel();
         gui.out.println("Enter your zip code: ");
         String zip = input.nextLine();
         gui.out.println("zip code: " + zip);
 
+        List<AbstractButton> buttons = gui.getButtons();
+        buttons.get(0).setText("Choice 1");
+        //buttons.remove(4);
+        buttons.add(new JRadioButton("Last Choice"));
+
+
         gui.showButtonPanel();
-
         gui.out.println("Make a Selection");
-
+        gui.disableTextInput();
         String selection = input.nextLine();
-        gui.out.println(selection + " <b>was selected</b>");
+        gui.out.println(selection + " was selected.");
 
         gui.hideButtonPanel();
+        gui.enableTextInput();
     }
 }

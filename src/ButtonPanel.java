@@ -12,7 +12,7 @@ import java.util.List;
  * ButtonPanel is one of two main components of TextStreamGUI.  It consists of a main JButton that
  * when clicked, inquires of the other modules to get their state (the "selections" made by the user)
  * and puts that data in a StringBuffer which can be read by the TextGUI InputStream.
- *
+ * <p>
  * In addition, it may contain modules of other types of GUI components which allow selections to be made
  * by the user.
  */
@@ -24,28 +24,37 @@ public class ButtonPanel {
     private JRadioButton cRadioButton;
     private JRadioButton dRadioButton;
     private JRadioButton eRadioButton;
+    private ArrayList<AbstractButton> buttons;
     private JPanel buttonPanelModule;
+    private JLabel label;
     StringBuffer input;
 
     /**
-     *
      * @param input - the StringBuffer from the main TextStreamGUI that the InputStream reads out of.
      *              ButtonPanel will append information into this StringBuffer to make it available
      *              to the InputStream
      */
     public ButtonPanel(StringBuffer input) {
         this.input = input;
+        this.buttons = new ArrayList<AbstractButton>();
+        this.buttons.add(aRadioButton);
+        this.buttons.add(bRadioButton);
+        this.buttons.add(cRadioButton);
+        this.buttons.add(dRadioButton);
+        this.buttons.add(eRadioButton);
+
         mainButton.addActionListener(new ActionListener() {
             /**
              * @param e ActionEvent that triggered the call of this method
              */
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (aRadioButton.isSelected()) {
-                    input.append(aRadioButton.getText());
-                    input.append("\n");
-                }
-                if (bRadioButton.isSelected()) {
+                for (AbstractButton b : buttons)
+                    if (b.isSelected()) {
+                        input.append(b.getText());
+                        input.append("\n");
+                    }
+/*                if (bRadioButton.isSelected()) {
                     input.append(bRadioButton.getText());
                     input.append("\n");
                 }
@@ -60,7 +69,7 @@ public class ButtonPanel {
                 if (eRadioButton.isSelected()) {
                     input.append(eRadioButton.getText());
                     input.append("\n");
-                }
+                }*/
             }
         });
     }
@@ -85,18 +94,18 @@ public class ButtonPanel {
         mainPanel.setPreferredSize(new Dimension(200, 600));
         mainButton = new JButton();
         mainButton.setPreferredSize(new Dimension(78, 50));
-        mainButton.setText("Button");
+        mainButton.setText("Submit");
         CellConstraints cc = new CellConstraints();
         mainPanel.add(mainButton, new CellConstraints(1, 3, 1, 1, CellConstraints.DEFAULT, CellConstraints.BOTTOM, new Insets(0, 5, 0, 5)));
         buttonPanelModule = new JPanel();
         buttonPanelModule.setLayout(new FormLayout("fill:d:noGrow", "center:d:noGrow,top:4dlu:noGrow,center:max(d;4px):noGrow,top:4dlu:noGrow,center:max(d;4px):noGrow,top:4dlu:noGrow,center:max(d;4px):noGrow,top:4dlu:noGrow,center:max(d;4px):noGrow,top:4dlu:noGrow,center:max(d;4px):noGrow"));
-        buttonPanelModule.setPreferredSize(new Dimension(200, 175));
+        buttonPanelModule.setPreferredSize(new Dimension(200, 380));
         mainPanel.add(buttonPanelModule, cc.xy(1, 1, CellConstraints.DEFAULT, CellConstraints.TOP));
-        final JLabel label1 = new JLabel();
-        label1.setAutoscrolls(true);
-        label1.setPreferredSize(new Dimension(200, 25));
-        label1.setText("Label");
-        buttonPanelModule.add(label1, new CellConstraints(1, 1, 1, 1, CellConstraints.FILL, CellConstraints.DEFAULT, new Insets(5, 5, 5, 5)));
+        label = new JLabel();
+        label.setAutoscrolls(true);
+        label.setPreferredSize(new Dimension(200, 25));
+        label.setText("Selection");
+        buttonPanelModule.add(label, new CellConstraints(1, 1, 1, 1, CellConstraints.FILL, CellConstraints.DEFAULT, new Insets(5, 5, 5, 5)));
         aRadioButton = new JRadioButton();
         aRadioButton.setText("A");
         buttonPanelModule.add(aRadioButton, cc.xy(1, 3));
@@ -133,14 +142,28 @@ public class ButtonPanel {
     }
 
     public List<AbstractButton> getButtons() {
-        ArrayList<AbstractButton> buttons = new ArrayList<>();
-        buttons.add(aRadioButton);
-        buttons.add(bRadioButton);
-        buttons.add(cRadioButton);
-        buttons.add(dRadioButton);
-        buttons.add(eRadioButton);
 
         return buttons;
 
+    }
+
+    public void refreshButtons() {
+        ButtonGroup buttonGroup;
+        CellConstraints cc = new CellConstraints();
+        buttonGroup = new ButtonGroup();
+        buttonPanelModule.removeAll();
+        String rowConstraints = "center:d:noGrow,";
+        for (int i = 1; i <= buttons.size(); i++) {
+            rowConstraints += "top:4dlu:noGrow,";
+            rowConstraints += "center:max(d;4px):noGrow,";
+        }
+        rowConstraints = rowConstraints.substring(0, rowConstraints.length() - 1);
+        buttonPanelModule.setLayout(new FormLayout(
+                "fill:d:noGrow", rowConstraints));
+        buttonPanelModule.add(label, new CellConstraints(1, 1, 1, 1, CellConstraints.FILL, CellConstraints.DEFAULT, new Insets(5, 5, 5, 5)));
+        for (int i = 3, button = 0; button < buttons.size(); button++, i += 2) {
+            buttonPanelModule.add(buttons.get(button), cc.xy(1, i));
+            buttonGroup.add(buttons.get(button));
+        }
     }
 }

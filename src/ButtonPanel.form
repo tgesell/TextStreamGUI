@@ -20,7 +20,7 @@
         </constraints>
         <properties>
           <preferredSize width="78" height="50"/>
-          <text value="Button"/>
+          <text value="Submit"/>
         </properties>
       </component>
       <grid id="c7a10" binding="buttonPanelModule" layout-manager="FormLayout">
@@ -41,11 +41,11 @@
           <forms defaultalign-vert="false"/>
         </constraints>
         <properties>
-          <preferredSize width="200" height="175"/>
+          <preferredSize width="200" height="380"/>
         </properties>
         <border type="none"/>
         <children>
-          <component id="cbcd2" class="javax.swing.JLabel">
+          <component id="cbcd2" class="javax.swing.JLabel" binding="label">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
               <forms top="5" left="5" bottom="5" right="5" defaultalign-horz="false"/>
@@ -53,7 +53,7 @@
             <properties>
               <autoscrolls value="true"/>
               <preferredSize width="200" height="25"/>
-              <text value="Label"/>
+              <text value="Selection"/>
             </properties>
           </component>
           <component id="9f96" class="javax.swing.JRadioButton" binding="aRadioButton" default-binding="true">

@@ -151,4 +151,15 @@ public class ConsolePanel {
     public JPanel getRootPanel() {
         return mainPanel;
     }
+
+    /**
+     * @param state - true if input field should be enabled, false if it should be disabled.
+     * enable or disable the text input field (to allow or disallow the user to enter text)
+     */
+    public void setEnabled(boolean state)
+    {
+        inputField.setEnabled(state);
+    }
+
+
 }
