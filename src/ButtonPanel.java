@@ -19,13 +19,9 @@ import java.util.List;
 public class ButtonPanel {
     private JPanel mainPanel;
     private JButton mainButton;
-    private JRadioButton aRadioButton;
-    private JRadioButton bRadioButton;
-    private JRadioButton cRadioButton;
-    private JRadioButton dRadioButton;
-    private JRadioButton eRadioButton;
     private ArrayList<AbstractButton> buttons;
-    private JPanel buttonPanelModule;
+    private ButtonModule buttonModule;
+    private JPanel buttonModulePanel;
     private JLabel label;
     StringBuffer input;
 
@@ -36,40 +32,17 @@ public class ButtonPanel {
      */
     public ButtonPanel(StringBuffer input) {
         this.input = input;
-        this.buttons = new ArrayList<AbstractButton>();
-        this.buttons.add(aRadioButton);
-        this.buttons.add(bRadioButton);
-        this.buttons.add(cRadioButton);
-        this.buttons.add(dRadioButton);
-        this.buttons.add(eRadioButton);
-
+        buttonModule = new SingleSelectOptionModule("Selection");
+        CellConstraints cc = new CellConstraints();
+        buttonModulePanel.setLayout(new FormLayout("fill:d:noGrow", "center:max(d;4px):noGrow"));
+        buttonModulePanel.add(buttonModule.getRootPanel(), cc.xy(1, 1));
         mainButton.addActionListener(new ActionListener() {
             /**
              * @param e ActionEvent that triggered the call of this method
              */
             @Override
             public void actionPerformed(ActionEvent e) {
-                for (AbstractButton b : buttons)
-                    if (b.isSelected()) {
-                        input.append(b.getText());
-                        input.append("\n");
-                    }
-/*                if (bRadioButton.isSelected()) {
-                    input.append(bRadioButton.getText());
-                    input.append("\n");
-                }
-                if (cRadioButton.isSelected()) {
-                    input.append(cRadioButton.getText());
-                    input.append("\n");
-                }
-                if (dRadioButton.isSelected()) {
-                    input.append(dRadioButton.getText());
-                    input.append("\n");
-                }
-                if (eRadioButton.isSelected()) {
-                    input.append(eRadioButton.getText());
-                    input.append("\n");
-                }*/
+                input.append(buttonModule.getSelectionText());
             }
         });
     }
@@ -97,37 +70,10 @@ public class ButtonPanel {
         mainButton.setText("Submit");
         CellConstraints cc = new CellConstraints();
         mainPanel.add(mainButton, new CellConstraints(1, 3, 1, 1, CellConstraints.DEFAULT, CellConstraints.BOTTOM, new Insets(0, 5, 0, 5)));
-        buttonPanelModule = new JPanel();
-        buttonPanelModule.setLayout(new FormLayout("fill:d:noGrow", "center:d:noGrow,top:4dlu:noGrow,center:max(d;4px):noGrow,top:4dlu:noGrow,center:max(d;4px):noGrow,top:4dlu:noGrow,center:max(d;4px):noGrow,top:4dlu:noGrow,center:max(d;4px):noGrow,top:4dlu:noGrow,center:max(d;4px):noGrow"));
-        buttonPanelModule.setPreferredSize(new Dimension(200, 380));
-        mainPanel.add(buttonPanelModule, cc.xy(1, 1, CellConstraints.DEFAULT, CellConstraints.TOP));
-        label = new JLabel();
-        label.setAutoscrolls(true);
-        label.setPreferredSize(new Dimension(200, 25));
-        label.setText("Selection");
-        buttonPanelModule.add(label, new CellConstraints(1, 1, 1, 1, CellConstraints.FILL, CellConstraints.DEFAULT, new Insets(5, 5, 5, 5)));
-        aRadioButton = new JRadioButton();
-        aRadioButton.setText("A");
-        buttonPanelModule.add(aRadioButton, cc.xy(1, 3));
-        bRadioButton = new JRadioButton();
-        bRadioButton.setText("B");
-        buttonPanelModule.add(bRadioButton, cc.xy(1, 5));
-        cRadioButton = new JRadioButton();
-        cRadioButton.setText("C");
-        buttonPanelModule.add(cRadioButton, cc.xy(1, 7));
-        dRadioButton = new JRadioButton();
-        dRadioButton.setText("D");
-        buttonPanelModule.add(dRadioButton, cc.xy(1, 9));
-        eRadioButton = new JRadioButton();
-        eRadioButton.setText("E");
-        buttonPanelModule.add(eRadioButton, cc.xy(1, 11));
-        ButtonGroup buttonGroup;
-        buttonGroup = new ButtonGroup();
-        buttonGroup.add(aRadioButton);
-        buttonGroup.add(bRadioButton);
-        buttonGroup.add(cRadioButton);
-        buttonGroup.add(dRadioButton);
-        buttonGroup.add(eRadioButton);
+        buttonModulePanel = new JPanel();
+        buttonModulePanel.setLayout(new FormLayout("", ""));
+        buttonModulePanel.setPreferredSize(new Dimension(200, 380));
+        mainPanel.add(buttonModulePanel, cc.xy(1, 1, CellConstraints.DEFAULT, CellConstraints.TOP));
     }
 
     /**
@@ -141,29 +87,16 @@ public class ButtonPanel {
         return mainPanel;
     }
 
-    public List<AbstractButton> getButtons() {
-
-        return buttons;
-
+    public void setButtonModule(ButtonModule buttonModule)
+    {
+        buttonModulePanel.remove(0);
+        CellConstraints cc = new CellConstraints();
+        buttonModulePanel.add(buttonModule.getRootPanel(), cc.xy(1, 1));
+        this.buttonModule = buttonModule;
     }
 
-    public void refreshButtons() {
-        ButtonGroup buttonGroup;
-        CellConstraints cc = new CellConstraints();
-        buttonGroup = new ButtonGroup();
-        buttonPanelModule.removeAll();
-        String rowConstraints = "center:d:noGrow,";
-        for (int i = 1; i <= buttons.size(); i++) {
-            rowConstraints += "top:4dlu:noGrow,";
-            rowConstraints += "center:max(d;4px):noGrow,";
-        }
-        rowConstraints = rowConstraints.substring(0, rowConstraints.length() - 1);
-        buttonPanelModule.setLayout(new FormLayout(
-                "fill:d:noGrow", rowConstraints));
-        buttonPanelModule.add(label, new CellConstraints(1, 1, 1, 1, CellConstraints.FILL, CellConstraints.DEFAULT, new Insets(5, 5, 5, 5)));
-        for (int i = 3, button = 0; button < buttons.size(); button++, i += 2) {
-            buttonPanelModule.add(buttons.get(button), cc.xy(1, i));
-            buttonGroup.add(buttons.get(button));
-        }
+    public ButtonModule getButtonModule()
+    {
+        return buttonModule;
     }
 }

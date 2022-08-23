@@ -23,19 +23,7 @@
           <text value="Submit"/>
         </properties>
       </component>
-      <grid id="c7a10" binding="buttonPanelModule" layout-manager="FormLayout">
-        <rowspec value="center:d:noGrow"/>
-        <rowspec value="top:4dlu:noGrow"/>
-        <rowspec value="center:max(d;4px):noGrow"/>
-        <rowspec value="top:4dlu:noGrow"/>
-        <rowspec value="center:max(d;4px):noGrow"/>
-        <rowspec value="top:4dlu:noGrow"/>
-        <rowspec value="center:max(d;4px):noGrow"/>
-        <rowspec value="top:4dlu:noGrow"/>
-        <rowspec value="center:max(d;4px):noGrow"/>
-        <rowspec value="top:4dlu:noGrow"/>
-        <rowspec value="center:max(d;4px):noGrow"/>
-        <colspec value="fill:d:noGrow"/>
+      <grid id="c7a10" binding="buttonModulePanel" layout-manager="FormLayout">
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
           <forms defaultalign-vert="false"/>
@@ -44,64 +32,7 @@
           <preferredSize width="200" height="380"/>
         </properties>
         <border type="none"/>
-        <children>
-          <component id="cbcd2" class="javax.swing.JLabel" binding="label">
-            <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-              <forms top="5" left="5" bottom="5" right="5" defaultalign-horz="false"/>
-            </constraints>
-            <properties>
-              <autoscrolls value="true"/>
-              <preferredSize width="200" height="25"/>
-              <text value="Selection"/>
-            </properties>
-          </component>
-          <component id="9f96" class="javax.swing.JRadioButton" binding="aRadioButton" default-binding="true">
-            <constraints>
-              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-              <forms/>
-            </constraints>
-            <properties>
-              <text value="A"/>
-            </properties>
-          </component>
-          <component id="e6ba0" class="javax.swing.JRadioButton" binding="bRadioButton" default-binding="true">
-            <constraints>
-              <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-              <forms/>
-            </constraints>
-            <properties>
-              <text value="B"/>
-            </properties>
-          </component>
-          <component id="6785a" class="javax.swing.JRadioButton" binding="cRadioButton" default-binding="true">
-            <constraints>
-              <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-              <forms/>
-            </constraints>
-            <properties>
-              <text value="C"/>
-            </properties>
-          </component>
-          <component id="b5dbb" class="javax.swing.JRadioButton" binding="dRadioButton" default-binding="true">
-            <constraints>
-              <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-              <forms/>
-            </constraints>
-            <properties>
-              <text value="D"/>
-            </properties>
-          </component>
-          <component id="2b2d6" class="javax.swing.JRadioButton" binding="eRadioButton" default-binding="true">
-            <constraints>
-              <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-              <forms/>
-            </constraints>
-            <properties>
-              <text value="E"/>
-            </properties>
-          </component>
-        </children>
+        <children/>
       </grid>
     </children>
   </grid>

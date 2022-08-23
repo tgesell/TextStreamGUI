@@ -158,7 +158,7 @@ public class TextStreamGUI {
      */
     public void showButtonPanel() {
         if (!(buttonPanelRootPanel.getParent() == mainPanel))
-            buttonPanel.refreshButtons();
+            buttonPanel.getButtonModule().refreshButtons();
             try {
                 SwingUtilities.invokeAndWait(new Runnable() {
                     public void run() {
@@ -184,7 +184,8 @@ public class TextStreamGUI {
         consolePanel.setEnabled(true);
     }
 
-    public List<AbstractButton> getButtons() {
-        return buttonPanel.getButtons();
+    public ButtonPanel getButtonPanel()
+    {
+        return buttonPanel;
     }
 }

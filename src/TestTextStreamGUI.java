@@ -28,9 +28,9 @@ public class TestTextStreamGUI {
         String zip = input.nextLine();
         gui.out.println("zip code: " + zip);
 
-        List<AbstractButton> buttons = gui.getButtons();
+        List<AbstractButton> buttons = gui.getButtonPanel().getButtonModule().getButtons();
         buttons.get(0).setText("Choice 1");
-        //buttons.remove(4);
+        buttons.remove(3);
         buttons.add(new JRadioButton("Last Choice"));
 
 
@@ -38,9 +38,15 @@ public class TestTextStreamGUI {
         gui.out.println("Make a Selection");
         gui.disableTextInput();
         String selection = input.nextLine();
-        gui.out.println(selection + " was selected.");
 
         gui.hideButtonPanel();
         gui.enableTextInput();
+
+        if (selection.equals("Choice 1"))
+        {
+            gui.out.println("You chose the best choice!  You chose: " + selection);
+        }
+        else
+            gui.out.println(selection + " was selected.");
     }
 }
