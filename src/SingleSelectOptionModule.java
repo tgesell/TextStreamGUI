@@ -21,11 +21,22 @@ public class SingleSelectOptionModule implements ButtonModule {
         this.buttons = new ArrayList<AbstractButton>();
         $$$setupUI$$$();
         this.label.setText(labelText);
-/*        this.buttons.add(aRadioButton);
-        this.buttons.add(bRadioButton);
-        this.buttons.add(cRadioButton);
-        this.buttons.add(dRadioButton);
-        this.buttons.add(eRadioButton);*/
+    }
+
+    public SingleSelectOptionModule(String labelText, List<String> buttonNames) {
+        this(labelText);
+        this.buttons.clear();
+        for (String buttonName : buttonNames) {
+            this.buttons.add(new JRadioButton(buttonName));
+        }
+    }
+
+    public SingleSelectOptionModule(String labelText, String... buttonName) {
+        this(labelText);
+        this.buttons.clear();
+        for (String name : buttonName) {
+            this.buttons.add(new JRadioButton(name));
+        }
     }
 
     public String getSelectionText() {
