@@ -1,3 +1,5 @@
+package com.timgesell.textstreamgui;
+
 import javax.swing.*;
 import java.util.List;
 

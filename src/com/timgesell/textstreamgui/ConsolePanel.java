@@ -1,3 +1,5 @@
+package com.timgesell.textstreamgui;
+
 import com.jgoodies.forms.layout.*;
 
 import javax.swing.*;

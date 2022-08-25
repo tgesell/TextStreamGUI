@@ -1,5 +1,7 @@
+import com.timgesell.textstreamgui.SingleSelectOptionModule;
+import com.timgesell.textstreamgui.TextStreamGUI;
+
 import javax.swing.*;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -48,12 +50,12 @@ public class TestTextStreamGUI {
         }
         else
             gui.out.println(selection + " was selected.");
-        /*ArrayList<String> selections = new ArrayList<String>();
-        selections.add("C to F");
-        selections.add("F to C");
-        selections.add("miles to km");
-        selections.add("km to miles");
-        SingleSelectOptionModule buttonSet = new SingleSelectOptionModule("Test",selections);*/
+//        ArrayList<String> selections = new ArrayList<String>();
+//        selections.add("C to F");
+//        selections.add("F to C");
+//        selections.add("miles to km");
+//        selections.add("km to miles");
+//        SingleSelectOptionModule buttonSet = new SingleSelectOptionModule("Test",selections);
 
         SingleSelectOptionModule buttonSet = new SingleSelectOptionModule("Test",
                 "C to F", "F to C", "miles to km", "km to miles");

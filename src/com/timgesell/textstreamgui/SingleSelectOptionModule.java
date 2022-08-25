@@ -1,5 +1,8 @@
+package com.timgesell.textstreamgui;
+
 import com.jgoodies.forms.layout.CellConstraints;
 import com.jgoodies.forms.layout.FormLayout;
+import com.timgesell.textstreamgui.ButtonModule;
 
 import javax.swing.*;
 import java.awt.*;

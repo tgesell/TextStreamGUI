@@ -1,12 +1,15 @@
+package com.timgesell.textstreamgui;
+
 import com.jgoodies.forms.layout.CellConstraints;
 import com.jgoodies.forms.layout.FormLayout;
+import com.timgesell.textstreamgui.ButtonModule;
+import com.timgesell.textstreamgui.SingleSelectOptionModule;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * ButtonPanel is one of two main components of TextStreamGUI.  It consists of a main JButton that
@@ -23,7 +26,7 @@ public class ButtonPanel {
     private ButtonModule buttonModule;
     private JPanel buttonModulePanel;
     private JLabel label;
-    StringBuffer input;
+    private StringBuffer input;
 
     /**
      * @param input - the StringBuffer from the main TextStreamGUI that the InputStream reads out of.

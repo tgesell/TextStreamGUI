@@ -1,14 +1,15 @@
+package com.timgesell.textstreamgui;
+
 import com.jgoodies.forms.layout.CellConstraints;
 import com.jgoodies.forms.layout.FormLayout;
+import com.timgesell.textstreamgui.ConsolePanel;
 
-//import javax.swing.*;
 import javax.swing.*;
 import java.awt.*;
 import java.io.InputStream;
 import java.io.PrintStream;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.List;
 
 /**
  * TextStreamGUI is a customizable Graphical User Interface based on the idea of
@@ -40,7 +41,7 @@ import java.util.List;
  * selections in the UI and click the button, and then return a result indicative of the selections to the user.
  *
  * @author Tim Gesell
- * @version 06/10/2022
+ * @version 08/22/2022
  */
 public class TextStreamGUI {
     private JPanel mainPanel;
